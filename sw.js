@@ -4,7 +4,7 @@ const CACHE_NAME = 'raysland-radio';
 const ASSETS = [
 '/raysland-radio/',
 '/raysland-radio/index.html',
-'/raysland-radio/image.html'
+'/raysland-radio/StreamPlayer-page2.html'
 ];
 
 // Install: cache app shell
@@ -41,7 +41,7 @@ return networkResponse;
 });
 });
 }).catch(() => {
-return caches.match('/efg-movie-hub/index.html');
+return caches.match('/raysland-radio/index.html');
 })
 );
 });
