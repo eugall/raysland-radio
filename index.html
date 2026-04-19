@@ -239,6 +239,17 @@
         }
 
         audio.onended = nextSong;
+        
+ // ── PWA: Service Worker Registration ──
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('SW registered:', reg.scope))
+                .catch(err => console.log('SW failed:', err));
+        });
+    }
+
+        
     </script>
     
   <a href="StreamPlayer-page2" target="_blank" title="next list">
