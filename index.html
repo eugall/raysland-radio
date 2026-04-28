@@ -3,146 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raysland Radio Cebu</title>
+    <title>Raysland Radio</title>
     <style>
         body {
             margin: 0; background: #121212; color: #FFD700;
             font-family: 'Segoe UI', sans-serif;
             display: flex; flex-direction: column; align-items: center; padding: 0;
         }
-
         .player-container {
             position: sticky; top: 0; background: #121212;
             width: 100%; max-width: 600px; padding: 20px 10px; 
             z-index: 10; border-bottom: 2px solid #FFD700;
             box-sizing: border-box;
         }
-
         .player-logo {
             position: absolute; top: 15px; right: 15px;     
             width: 45px; height: auto; z-index: 11;
             filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
         }
-
         canvas {
             width: 100%; height: 100px; background: #000;
             border: 1px solid #FFD700; border-radius: 8px; margin-bottom: 15px;
         }
-
         audio { width: 100%; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
-
         .playlist {
             width: 100%; max-width: 600px;
             margin: 0; list-style: none; padding: 10px;
             box-sizing: border-box;
         }
-
         .song-item {
             background: #1e1e1e; padding: 15px; margin-bottom: 8px;
             border-radius: 8px; cursor: pointer; transition: 0.2s;
             border: 1px solid #333; display: flex; justify-content: space-between;
             color: #eee;
         }
-
         .song-item.active {
             background: #FFD700; color: #000; font-weight: bold;
             border-color: #FFD700;
         }
-
         .song-info { font-size: 0.9rem; font-weight: bold; }
         .song-meta { font-size: 0.7rem; color: #888; }
-
         .tactical-header {
             width: 100%; background: #FFD700; color: #000;
             padding: 10px; font-weight: bold; text-align: center;
             text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;
         }
-
         .editor-container {
             width: 100%; max-width: 600px; background: #000;
             padding: 20px; box-sizing: border-box;
         }
-
         .editor-controls {
             display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 5px; margin-top: 15px;
         }
-
         .btn-tactical {
             background: #222; color: #FFD700; border: 1px solid #FFD700;
             padding: 12px 5px; text-transform: uppercase;
             font-size: 0.7rem; cursor: pointer; font-weight: bold;
         }
-
-        .btn-tactical:active { background: #FFD700; color: #000; }
+        .next-link {
+            padding: 20px; text-decoration: none; font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
     <div class="player-container">
         <img src="raysland.png" class="player-logo" alt="Logo">
-        <h3 id="current-title" style="text-align:center; margin-top:0;">RAYSLAND RADIO - CEBU</h3>
+        <h3 id="current-title" style="text-align:center; margin-top:0;">R2 MIXTAPE</h3>
         <canvas id="visualizer"></canvas>
-        <audio id="audio" controls crossorigin="anonymous"  controlslist="nodownload">
-        </audio>
+        <audio id="audio" controls crossorigin="anonymous" 
+        controlslist="nodownload"></audio>
     </div>
 
     <ul class="playlist" id="playlist">
-        <li class="song-item" data-src="https://files.catbox.moe/2w35wu.mp3">
-            <span class="song-info">01. Duets Easy Vol.1</span>
-            <span class="song-meta">Stream</span>
+        <li class="song-item" data-src="Duets easy 1.mp3">
+            <span class="song-info">Best of Duet 1</span>
+            <span class="song-meta">R2 STORAGE</span>
         </li>
-        <li class="song-item" data-src="https://files.catbox.moe/1df587.mp3">
-            <span class="song-info">02. Duet Easy Vol.2</span>
-            <span class="song-meta">Stream</span>
+        
+        <li class="song-item" data-src="Duets easy 2.mp3">
+            <span class="song-info">Best of Duet 2</span>
+            <span class="song-meta">R2 STORAGE</span>
         </li>
-        <li class="song-item" data-src="https://files.catbox.moe/9bftlo.mp3">
-            <span class="song-info">03. Duet easy vol.3</span>
-            <span class="song-meta">Stream</span>
+        <li class="song-item" data-src="Duets easy 3.mp3">
+            <span class="song-info">Best of Duet 3</span>
+            <span class="song-meta">R2 STORAGE</span>
         </li>
-        <li class="song-item" data-src="https://files.catbox.moe/39sehl.mp3">
-            <span class="song-info">04. New Wave</span>
-            <span class="song-meta">Stream</span>
+        <li class="song-item" data-src="Decades 1.mp3">
+            <span class="song-info">Decades 1</span>
+            <span class="song-meta">R2 STORAGE</span>
         </li>
-        <li class="song-item" data-src="https://files.catbox.moe/jo3zp3.mp3">
-            <span class="song-info">05. Soft '10s</span>
-            <span class="song-meta">Stream</span>
+        <li class="song-item" data-src="Decades 2.mp3">
+            <span class="song-info">Decades 2</span>
+            <span class="song-meta">R2 STORAGE</span>
         </li>
-        <li class="song-item" data-src="https://files.catbox.moe/oqmsll.mp3">
-            <span class="song-info">06. Soft '10s vol.2</span>
-            <span class="song-meta">Stream</span>
+        <li class="song-item" data-src="Poprock 1.mp3">
+            <span class="song-info">Pop rock 1</span>
+            <span class="song-meta">R2 STORAGE</span>
         </li>
-        <li class="song-item" data-src="https://files.catbox.moe/zvw6ao.mp3">
-            <span class="song-info">07. Decades Hits</span>
-            <span class="song-meta">Stream</span>
+        <li class="song-item" data-src="Poprock 2.mp3">
+            <span class="song-info">Pop rock 2</span>
+            <span class="song-meta">R2 STORAGE</span>
         </li>
-        <li class="song-item" data-src="https://files.catbox.moe/w4a9jj.mp3">
-            <span class="song-info">08. Soft '10s vol.3</span>
-            <span class="song-meta">Stream</span>
+        <!--
+        <li class="song-item" data-src="">
+            <span class="song-info"></span>
+            <span class="song-meta">R2 STORAGE</span>
         </li>
-        <li class="song-item" data-src="https://files.catbox.moe/mh8jhl.mp3">
-            <span class="song-info">09. Mega Hits</span>
-            <span class="song-meta">Stream</span>
-        </li>
-        <li class="song-item" data-src="https://files.catbox.moe/2xb2mg.mp3">
-            <span class="song-info">10. Love Classic</span>
-            <span class="song-meta">Stream</span>
-        </li>
+        -->
+        
         <li class="song-item" data-src="https://stream.zeno.fm/z7fgtpslunjuv">
-            <span class="song-info"> RAYSLAND RADIO LIVE</span>
+            <span class="song-info">RAYSLAND RADIO LIVE</span>
             <span class="song-meta">LIVE STREAM</span>
         </li>
     </ul>
 
-    
     <div class="tactical-header">Tactical Playlist Editor</div>
-   
     <div class="editor-container">
         <div style="border: 1px dashed #444; padding: 10px; text-align: center;">
             <input type="file" id="file-input" accept="audio/*" multiple style="color: #FFD700; width: 100%;">
         </div>
-    
-    
         <div class="editor-controls">
             <button class="btn-tactical" onclick="prevSong()">PREV</button>
             <button class="btn-tactical" onclick="togglePlay()">PLAY</button>
@@ -150,23 +131,44 @@
             <button class="btn-tactical" onclick="nextSong()">NEXT</button>
         </div>
     </div>
-
-   
-   
+    
+    <a href="https://eugall.github.io/R2Streamer" target="_blank" class="next-link">
+        <font color="#FFD700">NEXT LIST →</font>
+    </a>
+    
     <script>
+        // ==========================================
+        // 1. CONFIGURATION
+        // ==========================================
+        
+        const WORKER_URL = "https://r2streamer.eugall.workers.dev"; // Change this to your actual Worker URL
+
         const audio = document.getElementById('audio');
         const playlist = document.getElementById('playlist');
         const currentTitle = document.getElementById('current-title');
         const fileInput = document.getElementById('file-input');
 
+        // Helper to format the URL
+        function getFullUrl(path) {
+            if (path.startsWith('http') || path.startsWith('blob:')) return path;
+            return `${WORKER_URL}/${path}`;
+        }
+      
+        // ==========================================
+        // 2. PLAYER LOGIC
+        // ==========================================
         function playThis(element) {
-            const streamUrl = element.getAttribute('data-src');
+            const rawSource = element.getAttribute('data-src');
+            const streamUrl = getFullUrl(rawSource);
             const title = element.querySelector('.song-info').innerText;
+            
             document.querySelectorAll('.song-item').forEach(i => i.classList.remove('active'));
             element.classList.add('active');
+            
             currentTitle.innerText = title;
             audio.src = streamUrl;
             audio.play();
+            
             if (!audioCtx) initVisualizer();
         }
 
@@ -182,10 +184,7 @@
                 const li = document.createElement('li');
                 li.className = 'song-item';
                 li.setAttribute('data-src', url);
-                li.innerHTML = `
-                    <span class="song-info">${file.name}</span>
-                    <span class="song-meta">LOCAL</span>
-                `;
+                li.innerHTML = `<span class="song-info">${file.name}</span><span class="song-meta">LOCAL</span>`;
                 playlist.appendChild(li);
             });
         });
@@ -197,16 +196,19 @@
             const items = document.querySelectorAll('.song-item');
             let active = document.querySelector('.song-item.active');
             let next = active ? active.nextElementSibling : items[0];
-            if (next) playThis(next);
+            if (next && next.classList.contains('song-item')) playThis(next);
         }
 
         function prevSong() {
             const items = document.querySelectorAll('.song-item');
             let active = document.querySelector('.song-item.active');
             let prev = active ? active.previousElementSibling : items[items.length - 1];
-            if (prev) playThis(prev);
+            if (prev && prev.classList.contains('song-item')) playThis(prev);
         }
 
+        // ==========================================
+        // 3. VISUALIZER (CORS COMPATIBLE)
+        // ==========================================
         const canvas = document.getElementById('visualizer');
         const ctx = canvas.getContext('2d');
         let audioCtx, analyzer, source, dataArray, bufferLength;
@@ -237,10 +239,10 @@
                 x += barWidth;
             }
         }
-
+        
         audio.onended = nextSong;
         
- // ── PWA: Service Worker Registration ──
+        // ── PWA: Service Worker Registration ──
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('sw.js')
@@ -248,12 +250,6 @@
                 .catch(err => console.log('SW failed:', err));
         });
     }
-
-        
     </script>
-    
-  <a href="https://eugall.github.io/R2Streamer" target="_blank" title="next list">
-    <font size="4" color="#FFD700">  Next page</font></a>
-  <br><br>
 </body>
 </html>
