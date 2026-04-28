@@ -3,7 +3,8 @@ const CACHE_NAME = 'raysland-radio';
 // Files to cache (adjust if needed)
 const ASSETS = [
 '/raysland-radio/',
-'/raysland-radio/index.html'
+'/raysland-radio/index.html',
+'https://eugall.github.io/R2Streamer/'
 ];
 
 // Install: cache app shell
