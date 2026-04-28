@@ -3,8 +3,7 @@ const CACHE_NAME = 'raysland-radio';
 // Files to cache (adjust if needed)
 const ASSETS = [
 '/raysland-radio/',
-'/raysland-radio/index.html',
-'/raysland-radio/StreamPlayer-page2.html'
+'/raysland-radio/index.html'
 ];
 
 // Install: cache app shell
