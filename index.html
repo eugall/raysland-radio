@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raysland Radio</title>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Raysland radio R2 Streamer">
+  <meta name="description" content="Custom mastered mixtapes for the Raysland radio. Deep bass, crisp sound, zero ads.">
+
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://eugall.github.io/R2Streamer/">
+   <meta property="og:title" content="Raysland R2 Streamer">
+   <meta property="og:description" content="192kbps high-fidelity mixtapes. Gapless and normalized for the best listening experience.">
+   <meta property="og:image" content="https://eugall.github.io/R2Streamer/raysland.png">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://eugall.github.io/R2Streamer/">
+<meta property="twitter:title" content="Raysland R2 Streamer">
+<meta property="twitter:description" content="Mastered by Eugene Gallego. Optimized for mobile streaming.">
+<meta property="twitter:image" content="https://eugall.github.io/R2Streamer/raysland.png">
+
+   <title>Raysland Radio-R2 Streamer</title>
     <style>
         body {
             margin: 0; background: #121212; color: #FFD700;
@@ -242,14 +257,33 @@
         
         audio.onended = nextSong;
         
-        // ── PWA: Service Worker Registration ──
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('sw.js')
-                .then(reg => console.log('SW registered:', reg.scope))
-                .catch(err => console.log('SW failed:', err));
-        });
-    }
+    /* =======================================================
+   SERVICE WORKER TEMPLATE (CURRENTLY IN CLEANUP MODE)
+   ======================================================= */
+
+// --- ACTIVE: THE "NUKE" SCRIPT ---
+// This ensures old caches are cleared from user devices.
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for (let registration of registrations) {
+            registration.unregister();
+            console.log("Cleanup: Old Service Worker unregistered.");
+        }
+    });
+}
+
+// --- INACTIVE: REGISTRATION TEMPLATE ---
+// Uncomment the block below to reactivate SW for future projects.
+/* if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('SW Registered for fast loading', reg))
+            .catch(err => console.log('SW Registration failed', err));
+    });
+}
+*/
+
+    
     </script>
 </body>
 </html>
